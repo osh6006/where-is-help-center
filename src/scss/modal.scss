@@ -1,0 +1,92 @@
+@import "./common.scss";
+
+.loginModal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .content {
+    position: relative;
+    width: 600px;
+    top: 0;
+    text-align: center;
+    padding: 50px 100px;
+    border-radius: 10px;
+    background-color: $modal--bg--color;
+    margin-bottom: 150px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    .content-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 24px;
+
+      ion-icon {
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+
+    .login-box {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      margin-top: 45px;
+
+      ion-icon {
+        font-size: 30px;
+      }
+
+      #facebook-login-btn {
+        color: $facebook--color;
+        border: 2px solid $facebook--color;
+        &:hover {
+          color: $text--color--white;
+          background-color: $facebook--color;
+        }
+      }
+      #google-login-btn {
+        color: $google--color;
+        border: 2px solid $google--color;
+        &:hover {
+          color: $text--color--white;
+          background-color: $google--color;
+        }
+      }
+      #twitter-login-btn {
+        color: $twitter--color;
+        border: 2px solid $twitter--color;
+        &:hover {
+          color: $text--color--white;
+          background-color: $twitter--color;
+        }
+      }
+      #github-login-btn {
+        color: $github--color;
+        border: 2px solid $github--color;
+        &:hover {
+          color: $text--color--white;
+          background-color: $github--color;
+        }
+      }
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}

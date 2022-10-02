@@ -12,8 +12,11 @@
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
     />
 
+    <!-- css -->
+    <link rel="stylesheet" href="./src/scss/common.scss" />
     <link rel="stylesheet" href="./src/scss/navbar.scss" />
-    <link rel="stylesheet" href="./src/scss/dashboard.scss" />
+    <link rel="stylesheet" href="./src/scss/modal.scss" />
+    <link rel="stylesheet" href="./src/scss/main.scss" />
 
     <!-- icon -->
     <script
@@ -24,6 +27,21 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
+    <!-- naver map -->
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=200onucn9f&callback=initMap"
+    ></script>
+
+    <!-- firebase js -->
+    <script defer type="module" src="./src/js/firebase.js"></script>
+
+    <!-- modal js -->
+    <script defer src="./src/js/loginModal.js"></script>
+
+    <!-- login js -->
+    <script defer src="./src/js/login.js"></script>
   </head>
   <body>
     <!-- Nav bar -->
@@ -37,25 +55,99 @@
         <button>Go</button>
         <ion-icon name="heart-outline"></ion-icon>
         <ion-icon name="notifications-outline"></ion-icon>
-        <img src="" alt="profile" />
-        <ion-icon class="profile-info" name="chevron-down-outline"></ion-icon>
+        <button id="loginBtn" class="outline">Login</button>
+        <!-- <img src="" alt="profile" />
+        <ion-icon class="profile-info" name="chevron-down-outline"></ion-icon> -->
       </div>
     </nav>
+
+    <!-- modal -->
+    <div class="loginModal hidden">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="content-title">
+          <h1>로그인 방법을 선택해 주세요</h1>
+          <ion-icon name="close-outline"></ion-icon>
+        </div>
+        <div class="login-box">
+          <div id="facebook-login-btn" class="social-button">
+            <ion-icon name="logo-facebook"></ion-icon>
+            Connect with Facebook
+          </div>
+          <div id="google-login-btn" class="social-button">
+            <ion-icon name="logo-google"></ion-icon>
+            Connect with Google
+          </div>
+          <div id="twitter-login-btn" class="social-button">
+            <ion-icon name="logo-twitter"></ion-icon>
+            Connect with Twitter
+          </div>
+          <div id="github-login-btn" class="social-button">
+            <ion-icon name="logo-github"></ion-icon>
+            Connect with Github
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- main -->
     <main>
       <!-- 필터를 추가할 수도 있음... -->
-      <section class="main-left">
+      <section class="main-left style-scroll">
         <!-- datas... -->
         <h1>푸드트럭 허용구역</h1>
         <ul class="card-wrapper">
-          <li class="card"></li>
+          <li class="card">
+            <h2>부산가톨릭대학교 로사리오광장</h2>
+            <p>부산광역시 금정구</p>
+            <p>푸드트럭 운영 대수: 1</p>
+            <p>사용료 0</p>
+            <p>관리기관 : 부산광역시 금정구청</p>
+            <p>관리기관 전화번호 : 051-519-4414</p>
+          </li>
+          <li class="card">
+            <h2>부산가톨릭대학교 로사리오광장</h2>
+            <p>부산광역시 금정구</p>
+            <p>푸드트럭 운영 대수: 1</p>
+            <p>사용료 0</p>
+            <p>관리기관 : 부산광역시 금정구청</p>
+            <p>관리기관 전화번호 : 051-519-4414</p>
+          </li>
+          <li class="card">
+            <h2>부산가톨릭대학교 로사리오광장</h2>
+            <p>부산광역시 금정구</p>
+            <p>푸드트럭 운영 대수: 1</p>
+            <p>사용료 0</p>
+            <p>관리기관 : 부산광역시 금정구청</p>
+            <p>관리기관 전화번호 : 051-519-4414</p>
+          </li>
+          <li class="card">
+            <h2>부산가톨릭대학교 로사리오광장</h2>
+            <p>부산광역시 금정구</p>
+            <p>푸드트럭 운영 대수: 1</p>
+            <p>사용료 0</p>
+            <p>관리기관 : 부산광역시 금정구청</p>
+            <p>관리기관 전화번호 : 051-519-4414</p>
+          </li>
+          <li class="card">
+            <h2>부산가톨릭대학교 로사리오광장</h2>
+            <p>부산광역시 금정구</p>
+            <p>푸드트럭 운영 대수: 1</p>
+            <p>사용료 0</p>
+            <p>관리기관 : 부산광역시 금정구청</p>
+            <p>관리기관 전화번호 : 051-519-4414</p>
+          </li>
         </ul>
         <div class="page-wrapper">123...</div>
       </section>
       <section class="main-right">
         <!-- maps... -->
+        <div id="map"></div>
       </section>
     </main>
+    <script>
+      const mapDiv = document.getElementById("map");
+      const map = new naver.maps.Map(mapDiv);
+    </script>
   </body>
 </html>

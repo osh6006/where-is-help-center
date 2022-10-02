@@ -1,0 +1,87 @@
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Poppins:wght@200;300;400;500;600&display=swap");
+
+// colors
+$navbar--color: #e4eaed;
+$text--color: #000;
+$text--color--white: #fff;
+$button--color: #333536;
+$button--secondary: #97fcd2;
+$button--text: #fff;
+$button--secondary--text: #fff;
+$border--color: rgb(184, 184, 184);
+$card--hover--color: rgb(225, 236, 252);
+$modal--bg--color: white;
+$facebook--color: rgb(60, 90, 154);
+$google--color: rgb(220, 74, 61);
+$twitter--color: rgb(85, 172, 238);
+$github--color: rgb(116, 60, 154);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Nanum Gothic", "Poppins", sans-serif;
+}
+
+// buttons
+
+button {
+  padding: 10px;
+  background-color: $button--color;
+  color: $button--text;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  .secondary {
+    background-color: $button--secondary;
+    color: $button--secondary--text;
+  }
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $button--color;
+    color: $button--color;
+  }
+}
+
+.social-button {
+  color: black;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 15px;
+  gap: 40px;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 20px;
+  transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+// scroll bar
+.style-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+.style-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(left, #fff, #e4e4e4);
+  border: 1px solid #aaa;
+}
+
+.style-scroll::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+.style-scroll::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(left, #22add4, #1e98ba);
+}

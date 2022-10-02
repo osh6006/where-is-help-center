@@ -18,5 +18,8 @@
   },
   "staticFiles": {
     "staticPath": "static"
+  },
+  "dependencies": {
+    "firebase": "^9.10.0"
   }
 }
