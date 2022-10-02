@@ -1,16 +1,47 @@
-import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  FacebookAuthProvider,
+  TwitterAuthProvider,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
 import { app } from "./firebase";
 
 const facebookProvider = new FacebookAuthProvider();
 const googleProvider = new GoogleAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
+const githubProvider = new GithubAuthProvider();
+const auth = getAuth();
 
 const facebookBtn = document.getElementById("facebook-login-btn");
 const googleBtn = document.getElementById("google-login-btn");
+const twitterBtn = document.getElementById("twitter-login-btn");
+const githubBtn = document.getElementById("github-login-btn");
 
-const facbooklogin = () => {
-  const auth = getAuth();
-  signInWithPopup(auth, facebookProvider)
+const facbookLogin = () => {
+  commonLogin(auth, facebookProvider);
+};
+
+const googleLogin = () => {
+  commonLogin(auth, googleProvider);
+};
+
+const twitterLogin = () => {
+  commonLogin(auth, twitterProvider);
+};
+
+const githubLogin = () => {
+  commonLogin(auth, githubProvider);
+};
+
+googleBtn.addEventListener("click", googleLogin);
+facebookBtn.addEventListener("click", facbookLogin);
+twitterBtn.addEventListener("click", twitterLogin);
+githubBtn.addEventListener("click", githubLogin);
+
+function commonLogin(authInfo, provider) {
+  signInWithPopup(authInfo, provider)
     .then(result => {
       // The signed-in user info.
       const user = result.user;
@@ -30,5 +61,4 @@ const facbooklogin = () => {
       const credential = FacebookAuthProvider.credentialFromError(error);
       console.log(errorCode, errorMessage, email, credential);
     });
-};
-facebookBtn.addEventListener("click", facbooklogin);
+}

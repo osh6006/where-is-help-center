@@ -5,7 +5,7 @@ const closeBtn = modal.querySelector("ion-icon");
 const openModal = () => {
   modal.classList.remove("hidden");
 };
-const closeModal = () => {
+export const closeModal = () => {
   modal.classList.add("hidden");
 };
 openButton.addEventListener("click", openModal);

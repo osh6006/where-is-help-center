@@ -45,6 +45,11 @@ button {
     border: 1px solid $button--color;
     color: $button--color;
   }
+
+  &:hover {
+    color: $text--color--white;
+    background-color: $button--color;
+  }
 }
 
 .social-button {
