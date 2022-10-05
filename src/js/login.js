@@ -5,8 +5,11 @@ import {
   TwitterAuthProvider,
   GoogleAuthProvider,
   GithubAuthProvider,
+  signOut,
 } from "firebase/auth";
+import UserInfo from "../utils/userInfo";
 import { app } from "./firebase";
+import { closeModal } from "./loginModal";
 
 const facebookProvider = new FacebookAuthProvider();
 const googleProvider = new GoogleAuthProvider();
@@ -50,6 +53,14 @@ function commonLogin(authInfo, provider) {
       const accessToken = credential.accessToken;
       console.log(user);
       console.log(accessToken);
+      const userInfo = new UserInfo(
+        user.displayName,
+        user.email,
+        user.photoURL
+      );
+      sessionStorage.setItem("user", JSON.stringify(userInfo));
+      loginCheck();
+      closeModal();
     })
     .catch(error => {
       // Handle Errors here.
@@ -61,4 +72,32 @@ function commonLogin(authInfo, provider) {
       const credential = FacebookAuthProvider.credentialFromError(error);
       console.log(errorCode, errorMessage, email, credential);
     });
+}
+
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+document.addEventListener("DOMContentLoaded", loginCheck);
+
+logoutBtn.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("ASDf");
+      sessionStorage.clear();
+      loginCheck();
+    })
+    .catch(error => {
+      // An error happened.
+      alert("something error", error);
+    });
+});
+
+function loginCheck() {
+  if (!sessionStorage.getItem("user")) {
+    loginBtn.classList.remove("hidden");
+    logoutBtn.classList.add("hidden");
+  } else {
+    loginBtn.classList.add("hidden");
+    logoutBtn.classList.remove("hidden");
+  }
 }

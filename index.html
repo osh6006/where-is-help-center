@@ -34,6 +34,14 @@
       src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=200onucn9f&callback=initMap"
     ></script>
 
+    <!-- naver geocode -->
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=200onucn9f&submodules=geocoder"
+    ></script>
+
+    <script defer src="./src/js/map.js"></script>
+
     <!-- firebase js -->
     <script defer type="module" src="./src/js/firebase.js"></script>
 
@@ -55,7 +63,8 @@
         <button>Go</button>
         <ion-icon name="heart-outline"></ion-icon>
         <ion-icon name="notifications-outline"></ion-icon>
-        <button id="loginBtn" class="outline">Login</button>
+        <button id="loginBtn" class="outline hidden">Login</button>
+        <button id="logoutBtn" class="outline hidden">Logout</button>
         <!-- <img src="" alt="profile" />
         <ion-icon class="profile-info" name="chevron-down-outline"></ion-icon> -->
       </div>
@@ -145,9 +154,5 @@
         <div id="map"></div>
       </section>
     </main>
-    <script>
-      const mapDiv = document.getElementById("map");
-      const map = new naver.maps.Map(mapDiv);
-    </script>
   </body>
 </html>

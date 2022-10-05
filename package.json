@@ -20,6 +20,7 @@
     "staticPath": "static"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "firebase": "^9.10.0"
   }
 }
