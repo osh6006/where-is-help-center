@@ -7,6 +7,37 @@ const map = new naver.maps.Map("map", {
   zoom: 13,
 });
 
+let markers = new Array(); // 마커 정보를 담는 배열
+let infoWindows = new Array(); // 정보창을 담는 배열
+
+Promise.all([getCenterData()]).then(result => {
+  // 데이터를 받아온 후 마커를 그려줌
+  result[0].data.forEach(element => {
+    makeMarker(element);
+  });
+  addMarkerEvent();
+});
+
+// 다중마커 이벤트 리스너 등록하기
+naver.maps.Event.addListener(map, "idle", function () {
+  updateMarkers(map, markers);
+});
+
+// html이 다 그려지면 마커 클러스터링 하기
+document.addEventListener("DOMContentLoaded", () => {
+  startClustering(markers);
+});
+
+function addMarkerEvent() {
+  for (let index = 0; index < markers.length; index++) {
+    naver.maps.Event.addListener(
+      markers[index],
+      "click",
+      getClickHandler(index)
+    );
+  }
+}
+
 // 공공 API에서 코로나 예방접종 센터를 불러온다.
 function getCenterData() {
   return fetch(
@@ -46,7 +77,7 @@ function searchAddressToCoordinate(address) {
 }
 
 // 마커를 받아서 맵에 넣고 클릭리스너 등록
-function makeMarker(item, markerArray, infoWindowArray) {
+function makeMarker(item) {
   const x = parseFloat(item.lat);
   const y = parseFloat(item.lng);
 
@@ -69,35 +100,52 @@ function makeMarker(item, markerArray, infoWindowArray) {
       `<br/> 수정일 :  ${item.phoneNumber}` +
       "</div>",
   });
-  markerArray.push(marker);
-  infoWindowArray.push(infoWindow);
+  markers.push(marker);
+  infoWindows.push(infoWindow);
+}
+
+function updateMarkers(map, markers) {
+  var mapBounds = map.getBounds();
+  var marker, position;
+
+  for (var i = 0; i < markers.length; i++) {
+    marker = markers[i];
+    position = marker.getPosition();
+
+    if (mapBounds.hasLatLng(position)) {
+      showMarker(map, marker);
+    } else {
+      hideMarker(map, marker);
+    }
+  }
+}
+
+function showMarker(map, marker) {
+  if (marker.setMap()) return;
+  marker.setMap(map);
+}
+
+function hideMarker(map, marker) {
+  if (!marker.setMap()) return;
+  marker.setMap(null);
 }
 
 // 다수의 마커에 클릭 이벤트 지정하기
-function getClickHandler(index, markerArray, infoWindowArray) {
+// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+function getClickHandler(index) {
   return function (e) {
-    // 마커를 클릭하는 부분
-    let marker = markerArray[index], // 클릭한 마커의 시퀀스로 찾는다.
-      infoWindow = infoWindowArray[index]; // 클릭한 마커의 시퀀스로 찾는다
+    var marker = markers[index],
+      infoWindow = infoWindows[index];
 
     if (infoWindow.getMap()) {
       infoWindow.close();
     } else {
-      infoWindow.open(map, marker); // 표출
+      infoWindow.open(map, marker);
     }
   };
 }
 
-function addMarkerEvent(markerArray, infoWindowArray) {
-  for (let i = 0; i < markerArray.length; i++) {
-    naver.maps.Event.addListener(
-      markers[i],
-      "click",
-      getClickHandler(i, markerArray, infoWindowArray)
-    );
-  }
-}
-
+// 마커 클러스터링
 function startClustering(markerArray) {
   const htmlMarker1 = {
       content:
@@ -148,22 +196,6 @@ function startClustering(markerArray) {
     },
   });
 }
-
-const markers = new Array(); // 마커 정보를 담는 배열
-const infoWindows = new Array(); // 정보창을 담는 배열
-
-Promise.all([getCenterData()]).then(result => {
-  // 데이터를 받아온 후 마커를 그려줌
-  result[0].data.forEach(element => {
-    makeMarker(element, markers, infoWindows);
-  });
-});
-
-// html이 다 그려지면 마커 클러스터링 하기
-document.addEventListener("DOMContentLoaded", () => {
-  // addMarkerEvent(markers, infoWindows);
-  startClustering(markers);
-});
 
 // Promise.all([searchAddressToCoordinate("불당동")]).then(result => {
 //   // 데이터로 맵 초기화
