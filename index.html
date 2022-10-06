@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FTA</title>
+    <title>Where Is Center</title>
 
     <!-- reset cdn -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
     />
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- css -->
     <link rel="stylesheet" href="./src/scss/common.scss" />
@@ -33,6 +40,9 @@
 
     <!-- naver geocode -->
     <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=200onucn9f&submodules=geocoder"></script>
+
+    <!-- naver map markerclustring -->
+    <script src="./src/js/MarkerClustering.js"></script>
 
     <script type="module" defer src="./src/js/map.js"></script>
 
@@ -98,7 +108,7 @@
       <!-- 필터를 추가할 수도 있음... -->
       <section class="main-left style-scroll">
         <!-- datas... -->
-        <h1>푸드트럭 허용구역</h1>
+        <h1>나의 예약 목록</h1>
         <ul class="card-wrapper">
           <li class="card">
             <h2>부산가톨릭대학교 로사리오광장</h2>

@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
+    "buffer": "^6.0.3",
     "bundler": "^0.8.0",
     "cssnano": "^5.1.13",
     "parcel": "^2.7.0",
@@ -21,7 +22,9 @@
     "staticPath": "static"
   },
   "dependencies": {
+    "axios": "^1.0.0",
     "dotenv": "^16.0.3",
-    "firebase": "^9.10.0"
+    "firebase": "^9.10.0",
+    "http-proxy-middleware": "^2.0.6"
   }
 }
