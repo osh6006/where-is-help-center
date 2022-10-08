@@ -1,5 +1,7 @@
 import { CenterRops } from "../utils/apiOptions";
 import { MarkerClustering } from "./MarkerClustering";
+import markerURI from "../images/marker.png";
+import { readCenterInfo } from "./search";
 
 // 지도에서 처음에 보여질 구역 선언
 const map = new naver.maps.Map("map", {
@@ -9,6 +11,7 @@ const map = new naver.maps.Map("map", {
 
 let markers = new Array(); // 마커 정보를 담는 배열
 let infoWindows = new Array(); // 정보창을 담는 배열
+let infoArray = new Array();
 
 Promise.all([getCenterData()]).then(result => {
   // 데이터를 받아온 후 마커를 그려줌
@@ -49,33 +52,6 @@ function getCenterData() {
     .catch(error => console.log("error", error));
 }
 
-// 검색주소를 좌표로 변환
-function searchAddressToCoordinate(address) {
-  return new Promise((resolve, reject) => {
-    naver.maps.Service.geocode(
-      {
-        query: address,
-      },
-      function (status, response) {
-        if (status === naver.maps.Service.Status.ERROR) {
-          if (!address) {
-            return alert("Geocode Error, Please check address");
-          }
-          return alert("Geocode Error, address:" + address);
-        }
-        if (response.v2.meta.totalCount === 0) {
-          return;
-        }
-        // 아이템의 x, y 값으로 마커를 그려준다.
-        const item = response.v2.addresses[0];
-        const x = parseFloat(item.x);
-        const y = parseFloat(item.y);
-        resolve(item);
-      }
-    );
-  });
-}
-
 // 마커를 받아서 맵에 넣고 클릭리스너 등록
 function makeMarker(item) {
   const x = parseFloat(item.lat);
@@ -88,12 +64,22 @@ function makeMarker(item) {
   const marker = new naver.maps.Marker({
     map: map,
     position: position,
+    icon: {
+      content: [
+        "<div>",
+        `       <img src="${markerURI}" width="27" height="40" alt="병원위치"/>`,
+        "</div>",
+      ].join(""),
+      size: new naver.maps.Size(50, 52),
+      origin: new naver.maps.Point(0, 0),
+      anchor: new naver.maps.Point(25, 26),
+    },
   });
 
   /* 정보창 */
   let infoWindow = new naver.maps.InfoWindow({
     content:
-      '<div style="width:200px;text-align:center;padding:10px;border-radius:10px"><b>' +
+      '<div style="width:200px;text-align:center;padding:10px;border-radius:20px"><b>' +
       `</b><br/> 주소 : ${item.address}` +
       `<br/> 기관 명 : ${item.centerName}` +
       `<br/> 전화번호 : ${item.phoneNumber}` +
@@ -102,6 +88,7 @@ function makeMarker(item) {
   });
   markers.push(marker);
   infoWindows.push(infoWindow);
+  infoArray.push(item);
 }
 
 function updateMarkers(map, markers) {
@@ -134,14 +121,20 @@ function hideMarker(map, marker) {
 // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
 function getClickHandler(index) {
   return function (e) {
-    var marker = markers[index],
-      infoWindow = infoWindows[index];
-
+    const marker = markers[index],
+      infoWindow = infoWindows[index],
+      info = infoArray[index];
     if (infoWindow.getMap()) {
       infoWindow.close();
     } else {
       infoWindow.open(map, marker);
     }
+    const point = new naver.maps.LatLng(
+      marker.position._lat,
+      marker.position._lng
+    );
+    map.panTo(point);
+    readCenterInfo(info, infoArray);
   };
 }
 
@@ -150,7 +143,7 @@ function startClustering(markerArray) {
   const htmlMarker1 = {
       content:
         '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:20px;color:white;text-align:center;font-weight:bold;' +
-        'background:linear-gradient(to bottom right, blue, purple);background-size:cover;border-radius:50%;"></div>',
+        'background:linear-gradient(to bottom right, skyblue, blue);background-size:cover;border-radius:50%;"></div>',
       size: N.Size(40, 40),
       anchor: N.Point(20, 20),
     },
@@ -197,15 +190,33 @@ function startClustering(markerArray) {
   });
 }
 
+// 검색주소를 좌표로 변환 후 맵 이동
+export const searchAddressToCoordinate = address => {
+  naver.maps.Service.geocode(
+    {
+      query: address,
+    },
+    function (status, response) {
+      if (status === naver.maps.Service.Status.ERROR) {
+        if (!address) {
+          return alert("Geocode Error, Please check address");
+        }
+        return alert("Geocode Error, address:" + address);
+      }
+      if (response.v2.meta.totalCount === 0) {
+        return;
+      }
+      // 아이템의 x, y 값으로 마커를 그려준다.
+      const item = response.v2.addresses[0];
+      const lat = parseFloat(item.y);
+      const lng = parseFloat(item.x);
+      const point = new naver.maps.LatLng(lat, lng);
+      map.panTo(point);
+    }
+  );
+};
+
 // Promise.all([searchAddressToCoordinate("불당동")]).then(result => {
 //   // 데이터로 맵 초기화
 //   console.log(result);
 // });
-
-// for (let i = 0; i < 2; i++) {
-//   console.log("start");
-//   console.log(markers[i], getClickHandler(i));
-//   naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
-// }
-
-// inintMap();

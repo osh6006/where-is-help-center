@@ -14,8 +14,8 @@
 
     <!-- jquery -->
     <script
-      src="https://code.jquery.com/jquery-3.6.1.js"
-      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
       crossorigin="anonymous"
     ></script>
 
@@ -54,6 +54,9 @@
 
     <!-- login js -->
     <script type="module" defer src="./src/js/login.js"></script>
+
+    <!-- search js -->
+    <script type="module" defer src="./src/js/search.js"></script>
   </head>
   <body>
     <!-- Nav bar -->
@@ -61,10 +64,15 @@
       <div class="logo-wrapper">
         <img src="./src/images/logo-black.png" alt="logo" />
         <span><ion-icon name="search-outline"></ion-icon></span>
-        <input type="text" placeholder="Search city, hotel, apartments..." />
+        <input
+          type="text"
+          id="search"
+          onkeyup=""
+          placeholder="주소를 입력하고 Enter를 누르세요"
+        />
       </div>
       <div class="nav-right">
-        <button>Go</button>
+        <button id="searchBtn">Go</button>
         <ion-icon name="heart-outline"></ion-icon>
         <ion-icon name="notifications-outline"></ion-icon>
         <button id="loginBtn" class="outline hidden">Login</button>
@@ -107,51 +115,33 @@
     <main>
       <!-- 필터를 추가할 수도 있음... -->
       <section class="main-left style-scroll">
-        <!-- datas... -->
-        <h1>나의 예약 목록</h1>
-        <ul class="card-wrapper">
-          <li class="card">
-            <h2>부산가톨릭대학교 로사리오광장</h2>
-            <p>부산광역시 금정구</p>
-            <p>푸드트럭 운영 대수: 1</p>
-            <p>사용료 0</p>
-            <p>관리기관 : 부산광역시 금정구청</p>
-            <p>관리기관 전화번호 : 051-519-4414</p>
-          </li>
-          <li class="card">
-            <h2>부산가톨릭대학교 로사리오광장</h2>
-            <p>부산광역시 금정구</p>
-            <p>푸드트럭 운영 대수: 1</p>
-            <p>사용료 0</p>
-            <p>관리기관 : 부산광역시 금정구청</p>
-            <p>관리기관 전화번호 : 051-519-4414</p>
-          </li>
-          <li class="card">
-            <h2>부산가톨릭대학교 로사리오광장</h2>
-            <p>부산광역시 금정구</p>
-            <p>푸드트럭 운영 대수: 1</p>
-            <p>사용료 0</p>
-            <p>관리기관 : 부산광역시 금정구청</p>
-            <p>관리기관 전화번호 : 051-519-4414</p>
-          </li>
-          <li class="card">
-            <h2>부산가톨릭대학교 로사리오광장</h2>
-            <p>부산광역시 금정구</p>
-            <p>푸드트럭 운영 대수: 1</p>
-            <p>사용료 0</p>
-            <p>관리기관 : 부산광역시 금정구청</p>
-            <p>관리기관 전화번호 : 051-519-4414</p>
-          </li>
-          <li class="card">
-            <h2>부산가톨릭대학교 로사리오광장</h2>
-            <p>부산광역시 금정구</p>
-            <p>푸드트럭 운영 대수: 1</p>
-            <p>사용료 0</p>
-            <p>관리기관 : 부산광역시 금정구청</p>
-            <p>관리기관 전화번호 : 051-519-4414</p>
-          </li>
-        </ul>
-        <div class="page-wrapper">123...</div>
+        <!-- if empty -->
+        <div class="empty-wrapper">
+          <img src="./src/images/emptyimg.png" alt="" />
+          <h3>선택한 예방접종 센터가 없어요 😱<br />마커를 클릭해 주세요!</h3>
+        </div>
+
+        <!-- marker click -->
+        <div class="card-wrapper hidden">
+          <div class="card">
+            <div class="title-wrapper">
+              <img src="./src/images/titleimg.png" alt="asdf" />
+              <span class="icon-wrapper">
+                <ion-icon id="favoriteBtn" name="heart-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+          <div class="another-title">근처에 있는 다른 예방접종 센터</div>
+          <ul class="another-wrapper">
+            <li class="another-card">
+              <img src="./src/images/another-title.png" alt="another-title" />
+              <div class="another-card__desc">
+                <h1>asdf</h1>
+                <p>asdf</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
       <section class="main-right">
         <!-- maps... -->
