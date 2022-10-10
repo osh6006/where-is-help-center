@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./src/scss/navbar.scss" />
     <link rel="stylesheet" href="./src/scss/modal.scss" />
     <link rel="stylesheet" href="./src/scss/main.scss" />
+    <link rel="stylesheet" href="./src/scss/alam.scss" />
 
     <!-- icon -->
     <script
@@ -51,6 +52,7 @@
 
     <!-- modal js -->
     <script type="module" defer src="./src/js/loginModal.js"></script>
+    <script type="module" defer src="./src/js/alam.js"></script>
 
     <!-- login js -->
     <script type="module" defer src="./src/js/login.js"></script>
@@ -74,7 +76,7 @@
       <div class="nav-right">
         <button id="searchBtn">Go</button>
         <ion-icon name="heart-outline"></ion-icon>
-        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-icon id="alamBtn" name="notifications-outline"></ion-icon>
         <button id="loginBtn" class="outline hidden">Login</button>
         <button id="logoutBtn" class="outline hidden">Logout</button>
         <!-- <img src="" alt="profile" />
@@ -108,6 +110,16 @@
             Connect with Github
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- alam modal -->
+    <div class="alam-wrapper hidden">
+      <div class="alam-overlay"></div>
+      <div class="alam">
+        <h1>공지</h1>
+        <hr />
+        <div class="alam__detail-wrapper"></div>
       </div>
     </div>
 
