@@ -4,9 +4,9 @@ import markerURI from "../images/marker.png";
 import { readCenterInfo } from "./search";
 
 // 지도에서 처음에 보여질 구역 선언
-const map = new naver.maps.Map("map", {
+export const map = new naver.maps.Map("map", {
   center: new naver.maps.LatLng(37.541, 126.986),
-  zoom: 13,
+  zoom: 10,
 });
 
 let markers = new Array(); // 마커 정보를 담는 배열
@@ -19,16 +19,12 @@ Promise.all([getCenterData()]).then(result => {
     makeMarker(element);
   });
   addMarkerEvent();
+  startClustering(markers);
 });
 
 // 다중마커 이벤트 리스너 등록하기
 naver.maps.Event.addListener(map, "idle", function () {
   updateMarkers(map, markers);
-});
-
-// html이 다 그려지면 마커 클러스터링 하기
-document.addEventListener("DOMContentLoaded", () => {
-  startClustering(markers);
 });
 
 function addMarkerEvent() {

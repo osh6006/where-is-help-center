@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="./src/scss/modal.scss" />
     <link rel="stylesheet" href="./src/scss/main.scss" />
     <link rel="stylesheet" href="./src/scss/alam.scss" />
+    <link rel="stylesheet" href="./src/scss/like.scss" />
 
     <!-- icon -->
     <script
@@ -59,6 +60,10 @@
 
     <!-- search js -->
     <script type="module" defer src="./src/js/search.js"></script>
+
+    <!-- like js -->
+    <script type="module" defer src="./src/js/like.js"></script>
+    <script type="module" defer src="./src/js/likeList.js"></script>
   </head>
   <body>
     <!-- Nav bar -->
@@ -75,7 +80,7 @@
       </div>
       <div class="nav-right">
         <button id="searchBtn">Go</button>
-        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon id="likeBtn" name="heart-outline"></ion-icon>
         <ion-icon id="alamBtn" name="notifications-outline"></ion-icon>
         <button id="loginBtn" class="outline hidden">Login</button>
         <button id="logoutBtn" class="outline hidden">Logout</button>
@@ -123,6 +128,16 @@
       </div>
     </div>
 
+    <!-- like modal -->
+    <div class="like-wrapper hidden">
+      <div class="like-overlay"></div>
+      <div class="like">
+        <h1>즐겨찾기</h1>
+        <hr />
+        <div class="like__detail-wrapper"></div>
+      </div>
+    </div>
+
     <!-- main -->
     <main>
       <!-- 필터를 추가할 수도 있음... -->
@@ -135,14 +150,7 @@
 
         <!-- marker click -->
         <div class="card-wrapper hidden">
-          <div class="card">
-            <div class="title-wrapper">
-              <img src="./src/images/titleimg.png" alt="asdf" />
-              <span class="icon-wrapper">
-                <ion-icon id="favoriteBtn" name="heart-outline"></ion-icon>
-              </span>
-            </div>
-          </div>
+          <div class="card"></div>
           <div class="another-title">근처에 있는 다른 예방접종 센터</div>
           <ul class="another-wrapper">
             <li class="another-card">

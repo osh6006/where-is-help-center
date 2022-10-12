@@ -53,10 +53,12 @@ function commonLogin(authInfo, provider) {
       const accessToken = credential.accessToken;
       console.log(user);
       console.log(accessToken);
+      console.log(user.uid);
       const userInfo = new UserInfo(
         user.displayName,
         user.email,
-        user.photoURL
+        user.photoURL,
+        user.uid
       );
       sessionStorage.setItem("user", JSON.stringify(userInfo));
       loginCheck();
@@ -82,9 +84,9 @@ document.addEventListener("DOMContentLoaded", loginCheck);
 logoutBtn.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
-      console.log("ASDf");
       sessionStorage.clear();
       loginCheck();
+      window.location.reload();
     })
     .catch(error => {
       // An error happened.
