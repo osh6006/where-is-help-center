@@ -40,7 +40,7 @@ function addMarkerEvent() {
 // 공공 API에서 코로나 예방접종 센터를 불러온다.
 function getCenterData() {
   return fetch(
-    `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=285&serviceKey=2BThF1WydOqwAbvuioUbtuzWqeRjwIS0fUDZb4tNTgCKTZ0TQ6rhT0l5WQ23wGZG1XovBpE7iaXHWSFIakTQ`,
+    `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=285&serviceKey=ie8%2BThF1WydOqwAbvuioUbtuzWqeRjwIS0fUDZb4tNTgCKTZ0TQ6rhT0l5WQ23wGZG1XovBpE7iaXHWSFIakTQ%3D%3D`,
     CenterRops
   )
     .then(response => response.json())
