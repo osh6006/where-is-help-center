@@ -113,7 +113,6 @@ export function drawReserveSection(info) {
 }
 
 async function saveReserve(info, day, time) {
-  console.log(day);
   const user = JSON.parse(sessionStorage.getItem("user"));
   const reserveDocRef = doc(
     db,

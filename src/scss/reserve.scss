@@ -126,10 +126,6 @@
       left: 203px;
     }
 
-    h1 {
-      font-weight: 600;
-    }
-
     .reserve__detail-wrapper {
       .reserve__detail {
         display: flex;
@@ -139,7 +135,6 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: all 0.2s ease-in-out;
         img {
           width: 70px;
         }

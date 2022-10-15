@@ -20,8 +20,6 @@ let filterArray = [];
 let isLike = false;
 
 export const readCenterInfo = (info, infoArray) => {
-  console.log(info);
-
   filterArray = infoArray.filter(
     data =>
       data.sido === info.sido &&

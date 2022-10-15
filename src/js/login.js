@@ -51,9 +51,6 @@ function commonLogin(authInfo, provider) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-      console.log(user);
-      console.log(accessToken);
-      console.log(user.uid);
       const userInfo = new UserInfo(
         user.displayName,
         user.email,

@@ -117,7 +117,6 @@ async function reserveInit() {
   // doc.id
   // doc.data()
   querySnapshot.forEach(doc => {
-    console.log(doc.data());
     const reserveDetail = document.createElement("div");
     reserveDetail.classList.add("reserve__detail");
 

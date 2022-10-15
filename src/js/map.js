@@ -218,7 +218,6 @@ export const searchAddressToCoordinate = address => {
 // });
 
 export function moveMap(lat, lng) {
-  console.log(map);
   const point = new naver.maps.LatLng(lat, lng);
   map.setZoom(15);
   map.panTo(point);

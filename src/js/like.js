@@ -9,11 +9,6 @@ import {
 import { db } from "./firebase";
 
 export async function saveLike(info) {
-  console.log(info);
-  console.log(info.lat);
-  console.log(info.lng);
-  console.log(info.id);
-
   if (sessionStorage.getItem("user") === null) {
     alert("로그인을 해주세요");
     return;
@@ -30,7 +25,7 @@ export async function saveLike(info) {
       desc: info.facilityName,
       address: info.address,
     });
-    console.log("Document written : ", likeDocRef);
+    console.log("success");
   } catch (e) {
     console.error("Error adding document: ", e);
   }

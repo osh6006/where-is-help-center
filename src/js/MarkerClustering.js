@@ -19,7 +19,7 @@
  * @param {Object} options 마커 클러스터링 옵션
  */
 
-export const MarkerClustering = function (options) {
+export function MarkerClustering(options) {
   // 기본 값입니다.
   this.DEFAULT_OPTIONS = {
     // 클러스터 마커를 올릴 지도입니다.
@@ -54,7 +54,7 @@ export const MarkerClustering = function (options) {
     true
   );
   this.setMap(options.map || null);
-};
+}
 
 naver.maps.Util.ClassExtend(MarkerClustering, naver.maps.OverlayView, {
   onAdd: function () {
