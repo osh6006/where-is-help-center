@@ -2,6 +2,7 @@ import { searchAddressToCoordinate } from "./map";
 import titleimgURL from "../images/titleimg.png";
 import anotherimgURL from "../images/another-title.png";
 import { deleteLike, likeCheck, saveLike } from "./like";
+import { drawReserveSection } from "./reserve";
 
 const searchBtn = document.getElementById("searchBtn");
 const searchInputEl = document.getElementById("search");
@@ -47,16 +48,23 @@ export const readCenterInfo = (info, infoArray) => {
   titleWrapperEl.appendChild(iconWrapper);
 
   const infoTitle = document.createElement("h1");
-  const facilityName = document.createElement("p");
-  const address = document.createElement("p");
-  const phoneNumber = document.createElement("p");
-  const updatedAt = document.createElement("p");
+  const facilityName = document.createElement("span");
+  const address = document.createElement("span");
+  const phoneNumber = document.createElement("span");
+  const updatedAt = document.createElement("span");
+
+  // <ion-icon name="fitness-outline"></ion-icon>
 
   infoTitle.textContent = info.centerName.substring(6);
-  facilityName.textContent = info.facilityName;
-  address.textContent = info.address;
-  phoneNumber.textContent = info.phoneNumber;
-  updatedAt.textContent = info.updatedAt;
+  facilityName.innerHTML = `
+  <ion-icon name="fitness-outline" class="heart-icon"></ion-icon> 
+  <p>${info.facilityName}</p> `;
+  address.innerHTML = `<ion-icon name="reader-outline" class="address-icon"></ion-icon>
+  <p>${info.address}</p>`;
+  phoneNumber.innerHTML = `<ion-icon name="call-outline" class="phone-icon"></ion-icon>
+  <p>${info.phoneNumber}</p>`;
+  updatedAt.innerHTML = `<ion-icon name="information-circle-outline" class="updete-icon"></ion-icon>
+  <p>${info.updatedAt} Updated ! </p>`;
 
   card.appendChild(titleWrapperEl);
   card.appendChild(infoTitle);
@@ -88,6 +96,8 @@ export const readCenterInfo = (info, infoArray) => {
     });
   }
 
+  // draw reserve section....
+  drawReserveSection(info);
   drawAnotherCenter();
 };
 

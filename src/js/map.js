@@ -216,3 +216,10 @@ export const searchAddressToCoordinate = address => {
 //   // 데이터로 맵 초기화
 //   console.log(result);
 // });
+
+export function moveMap(lat, lng) {
+  console.log(map);
+  const point = new naver.maps.LatLng(lat, lng);
+  map.setZoom(15);
+  map.panTo(point);
+}

@@ -19,6 +19,9 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- lodash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
     <!-- css -->
     <link rel="stylesheet" href="./src/scss/common.scss" />
     <link rel="stylesheet" href="./src/scss/navbar.scss" />
@@ -26,6 +29,7 @@
     <link rel="stylesheet" href="./src/scss/main.scss" />
     <link rel="stylesheet" href="./src/scss/alam.scss" />
     <link rel="stylesheet" href="./src/scss/like.scss" />
+    <link rel="stylesheet" href="./src/scss/reserve.scss" />
 
     <!-- icon -->
     <script
@@ -61,6 +65,10 @@
     <!-- search js -->
     <script type="module" defer src="./src/js/search.js"></script>
 
+    <!-- reserve -->
+    <script type="module" defer src="./src/js/reserve.js"></script>
+    <script type="module" defer src="./src/js/reserveList.js"></script>
+
     <!-- like js -->
     <script type="module" defer src="./src/js/like.js"></script>
     <script type="module" defer src="./src/js/likeList.js"></script>
@@ -80,6 +88,7 @@
       </div>
       <div class="nav-right">
         <button id="searchBtn">Go</button>
+        <ion-icon id="reserveBtn" name="calendar-outline"></ion-icon>
         <ion-icon id="likeBtn" name="heart-outline"></ion-icon>
         <ion-icon id="alamBtn" name="notifications-outline"></ion-icon>
         <button id="loginBtn" class="outline hidden">Login</button>
@@ -138,6 +147,16 @@
       </div>
     </div>
 
+    <!-- reserve modal -->
+    <div class="reserve-modal-wrapper hidden">
+      <div class="reserve-modal-overlay"></div>
+      <div class="reserve-modal-content">
+        <h1>나의 예약 목록</h1>
+        <hr />
+        <div class="reserve__detail-wrapper"></div>
+      </div>
+    </div>
+
     <!-- main -->
     <main>
       <!-- 필터를 추가할 수도 있음... -->
@@ -151,6 +170,8 @@
         <!-- marker click -->
         <div class="card-wrapper hidden">
           <div class="card"></div>
+          <!-- reserve -->
+          <section class="reserve"></section>
           <div class="another-title">근처에 있는 다른 예방접종 센터</div>
           <ul class="another-wrapper">
             <li class="another-card">

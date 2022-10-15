@@ -90,14 +90,37 @@ main {
         }
       }
       h1 {
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 600;
         margin-top: 25px;
       }
 
-      p {
-        font-size: 15px;
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5rem;
         margin-top: 1rem;
+        p {
+          font-size: 17px;
+          line-height: 1.4rem;
+        }
+
+        .heart-icon {
+          font-size: 1.5rem;
+          color: palevioletred;
+        }
+        .address-icon {
+          font-size: 1.6rem;
+          color: darkslateblue;
+        }
+        .phone-icon {
+          font-size: 1.25rem;
+          color: red;
+        }
+        .updete-icon {
+          color: purple;
+        }
       }
     }
 
