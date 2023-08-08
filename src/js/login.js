@@ -1,3 +1,10 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 사용자의 로그인을 처리한다.
+ * 작성 일 : 2022. 10. 10
+ * 수정 일 : 2023. 10. 10
+ */
+
 import {
   getAuth,
   signInWithPopup,
@@ -8,7 +15,6 @@ import {
   signOut,
 } from "firebase/auth";
 import UserInfo from "../utils/userInfo";
-import { app } from "./firebase";
 import { closeModal } from "./loginModal";
 
 const facebookProvider = new FacebookAuthProvider();
@@ -43,6 +49,11 @@ facebookBtn.addEventListener("click", facbookLogin);
 twitterBtn.addEventListener("click", twitterLogin);
 githubBtn.addEventListener("click", githubLogin);
 
+/**
+ * 공통적인 로그인 처리
+ * @param {*} authInfo
+ * @param {*} provider
+ */
 function commonLogin(authInfo, provider) {
   signInWithPopup(authInfo, provider)
     .then(result => {
@@ -62,12 +73,9 @@ function commonLogin(authInfo, provider) {
       closeModal();
     })
     .catch(error => {
-      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
       const email = error.customData.email;
-      // The AuthCredential type that was used.
       const credential = FacebookAuthProvider.credentialFromError(error);
       console.log(errorCode, errorMessage, email, credential);
     });
@@ -86,11 +94,13 @@ logoutBtn.addEventListener("click", () => {
       window.location.reload();
     })
     .catch(error => {
-      // An error happened.
       alert("something error", error);
     });
 });
 
+/**
+ * 로그인 체크 확인
+ */
 function loginCheck() {
   if (!sessionStorage.getItem("user")) {
     loginBtn.classList.remove("hidden");

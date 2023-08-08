@@ -1,3 +1,10 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 로그인 팝업을 toggle한다.
+ * 작성 일 : 2022. 10. 10
+ * 수정 일 : 2023. 10. 10
+ */
+
 const openButton = document.getElementById("loginBtn");
 const modal = document.querySelector(".loginModal");
 const overlay = modal.querySelector(".overlay");
