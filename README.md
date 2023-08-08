@@ -58,11 +58,11 @@ Describe your project
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [HTML](https://expo.io/)
+- [CSS](https://nodejs.org/en/)
+- [Javascript](https://pt-br.reactjs.org/)
+- [Parcel](https://reactnative.dev/)
+- [NaverMapAPI](https://www.typescriptlang.org/)
 
 ## :white_check_mark: Requirements
 
@@ -90,7 +90,7 @@ $ npm run dev
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-Made with :heart: by <a href="https://github.com/osh6006" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/osh6006" target="_blank">osh6006</a>
 
 &#xa0;
 
