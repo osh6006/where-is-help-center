@@ -6,7 +6,7 @@
   <!-- <a href="https://foodtruckarea.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Food Truck Area</h1>
+<h1 align="center">Where Is Help Center</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/where-is-help-center?color=56BEB8">
