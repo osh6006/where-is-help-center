@@ -1,3 +1,10 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 파이어베이스 DB로 부터 알람 데이터를 불러온다.
+ * 작성 일 : 2022. 10. 10
+ * 작성 일 : 2022. 10. 10
+ */
+
 import { db } from "./firebase";
 import { collection, getDoc, getDocs } from "firebase/firestore";
 import alamImgURL from "../images/alam.png";
@@ -19,15 +26,11 @@ const closeAlam = () => {
 alamBtn.addEventListener("click", openAlam);
 alamOverlayEl.addEventListener("click", closeAlam);
 
-// get alamdata
-
 const alamDetailWrapperEl = document.querySelector(".alam__detail-wrapper");
 
-// 알람 데이터 받아오기
 async function alamInit() {
   const querySnapshot = await getDocs(collection(db, "alam"));
-  // doc.id 알람제목
-  // doc.data() 알람
+
   querySnapshot.forEach(doc => {
     alamDetailWrapperEl.innerHTML += `
         <div class="alam__detail">

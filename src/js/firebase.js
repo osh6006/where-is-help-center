@@ -1,23 +1,25 @@
-// Import the functions you need from the SDKs you need
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 파이어베이스 config를 초기화 한다.
+ * 작성 일 : 2022. 10. 5
+ * 작성 일 : 2023. 8. 8
+ */
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { Firestore, getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCc9sS7BiLq7wZ8sNWahL1ow3-vNP6jGnA",
-  authDomain: "foodtruckarea.firebaseapp.com",
-  projectId: "foodtruckarea",
-  storageBucket: "foodtruckarea.appspot.com",
-  messagingSenderId: "689413924072",
-  appId: "1:689413924072:web:950ca41c8f14942def155d",
-  measurementId: "G-WTDYPKGMR0",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SANDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+// 파이어 베이스 초기화
 export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
