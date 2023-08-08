@@ -2,7 +2,7 @@
  * 작성자 : 오황석
  * 이 파일의 역할 : 파이어베이스 config를 초기화 한다.
  * 작성 일 : 2022. 10. 5
- * 작성 일 : 2023. 8. 8
+ * 수정 일 : 2023. 8. 8
  */
 
 import { initializeApp } from "firebase/app";

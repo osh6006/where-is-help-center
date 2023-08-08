@@ -1,4 +1,10 @@
-import { async } from "@firebase/util";
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 사용자가 센터를 즐겨찾기와 즐겨찾기 취소 로직을 수행한다.
+ * 작성 일 : 2022. 10. 10
+ * 수정 일 : 2022. 10. 10
+ */
+
 import {
   doc,
   setDoc,
@@ -8,6 +14,10 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+/**
+ * 좋아요 저장
+ * @param {object} info
+ */
 export async function saveLike(info) {
   if (sessionStorage.getItem("user") === null) {
     alert("로그인을 해주세요");
@@ -15,7 +25,6 @@ export async function saveLike(info) {
   }
 
   const user = JSON.parse(sessionStorage.getItem("user"));
-
   const likeDocRef = doc(db, "likes", user.uid, "place", info.id.toString());
   try {
     await setDoc(likeDocRef, {
@@ -31,13 +40,20 @@ export async function saveLike(info) {
   }
 }
 
+/**
+ * 좋아요 삭제
+ * @param {object} info
+ */
 export async function deleteLike(info) {
   const user = JSON.parse(sessionStorage.getItem("user"));
   await deleteDoc(doc(db, "likes", user.uid, "place", info.id.toString()));
 }
 
+/**
+ * 좋아요 여부 확인
+ * @param {object} info
+ */
 export async function likeCheck(info) {
-  // get data to server
   if (sessionStorage.getItem("user") === null) {
     alert("로그인을 해주세요");
     return;
