@@ -1,20 +1,31 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 네이버 지도 초기화 및 마커등록 및 클러스터를 등록한다.
+ * 작성 일 : 2022. 10. 5
+ * 수정 일 : 2023. 8. 8
+ */
+
 import { CenterRops } from "../utils/apiOptions";
 import { MarkerClustering } from "./MarkerClustering";
 import markerURI from "../images/marker.png";
 import { readCenterInfo } from "./search";
 
-// 지도에서 처음에 보여질 구역 선언
+/**
+ * 맵을 초기화 합니다.
+ */
 export const map = new naver.maps.Map("map", {
   center: new naver.maps.LatLng(37.541, 126.986),
   zoom: 10,
 });
 
-let markers = new Array(); // 마커 정보를 담는 배열
-let infoWindows = new Array(); // 정보창을 담는 배열
+let markers = new Array();
+let infoWindows = new Array();
 let infoArray = new Array();
 
+/**
+ * 센터 데이터를 불러오고 마커이벤트를 등록 후 클러스터링 작업
+ */
 Promise.all([getCenterData()]).then(result => {
-  // 데이터를 받아온 후 마커를 그려줌
   result[0].data.forEach(element => {
     makeMarker(element);
   });
@@ -37,26 +48,25 @@ function addMarkerEvent() {
   }
 }
 
-// 공공 API에서 코로나 예방접종 센터를 불러온다.
-function getCenterData() {
-  return fetch(
-    `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=285&serviceKey=ie8%2BThF1WydOqwAbvuioUbtuzWqeRjwIS0fUDZb4tNTgCKTZ0TQ6rhT0l5WQ23wGZG1XovBpE7iaXHWSFIakTQ%3D%3D`,
-    CenterRops
-  )
+/**
+ * 공공 API에서 코로나 예방접종 센터를 불러온다.
+ */
+async function getCenterData() {
+  return fetch(`${process.env.CENTER_API_URL}`, CenterRops)
     .then(response => response.json())
     .then(result => Promise.resolve(result))
     .catch(error => console.log("error", error));
 }
 
-// 마커를 받아서 맵에 넣고 클릭리스너 등록
+/**
+ * 마커를 받아서 맵에 넣고 클릭리스너를 등록합니다.
+ * @param {object} item
+ */
 function makeMarker(item) {
   const x = parseFloat(item.lat);
   const y = parseFloat(item.lng);
 
-  // 마커 포지션 지정
   const position = new naver.maps.LatLng(x, y);
-
-  // 마커 생성
   const marker = new naver.maps.Marker({
     map: map,
     position: position,
@@ -87,6 +97,11 @@ function makeMarker(item) {
   infoArray.push(item);
 }
 
+/**
+ * 마커들을 업데이트 합니다.
+ * @param {*} map
+ * @param {*} marker
+ */
 function updateMarkers(map, markers) {
   var mapBounds = map.getBounds();
   var marker, position;
@@ -103,18 +118,34 @@ function updateMarkers(map, markers) {
   }
 }
 
+/**
+ * 마커를 보여줍니다.
+ * @param {*} map
+ * @param {*} marker
+ * @returns undifined
+ */
 function showMarker(map, marker) {
   if (marker.setMap()) return;
   marker.setMap(map);
 }
 
+/**
+ * 마커를 숨깁니다.
+ * @param {*} map
+ * @param {*} marker
+ * @returns undifined
+ */
 function hideMarker(map, marker) {
   if (!marker.setMap()) return;
   marker.setMap(null);
 }
 
-// 다수의 마커에 클릭 이벤트 지정하기
-// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+/**
+ * 다수의 마커에 클릭 이벤트 지정하기
+ * 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+ * @param {number} index
+ * @returns
+ */
 function getClickHandler(index) {
   return function (e) {
     const marker = markers[index],
@@ -134,7 +165,10 @@ function getClickHandler(index) {
   };
 }
 
-// 마커 클러스터링
+/**
+ * 마커 클러스터링
+ * @param {array} markerArray
+ */
 function startClustering(markerArray) {
   const htmlMarker1 = {
       content:
@@ -186,7 +220,10 @@ function startClustering(markerArray) {
   });
 }
 
-// 검색주소를 좌표로 변환 후 맵 이동
+/**
+ * 검색주소를 좌표로 변환 후 맵 이동
+ * @param {string} address
+ */
 export const searchAddressToCoordinate = address => {
   naver.maps.Service.geocode(
     {
@@ -212,11 +249,11 @@ export const searchAddressToCoordinate = address => {
   );
 };
 
-// Promise.all([searchAddressToCoordinate("불당동")]).then(result => {
-//   // 데이터로 맵 초기화
-//   console.log(result);
-// });
-
+/**
+ * 위도와 경도를 받아서 맵을 이동시킨다.
+ * @param {number} lat
+ * @param {number} lng
+ */
 export function moveMap(lat, lng) {
   const point = new naver.maps.LatLng(lat, lng);
   map.setZoom(15);

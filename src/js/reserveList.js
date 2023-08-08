@@ -1,3 +1,10 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : firebase로 부터 예약 리스트를 불러오고 예약을 취소한다.
+ * 작성 일 : 2022. 10. 5
+ * 수정 일 : 2023. 8. 8
+ */
+
 import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { doc, deleteDoc } from "firebase/firestore";
@@ -29,6 +36,9 @@ const reserveDetailWrapperEl = document.querySelector(
   ".reserve__detail-wrapper"
 );
 
+/**
+ * 예약 리스트 초기화
+ */
 async function reserveInit() {
   reserveDetailWrapperEl.innerHTML = "";
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -105,6 +115,13 @@ async function reserveInit() {
   });
 }
 
+/**
+ * 예약을 취소한다.
+ * @param {string} id
+ * @param {string} uid
+ * @param {string} day
+ * @param {string} time
+ */
 async function deleteReserve(id, uid, day, time) {
   await deleteDoc(
     doc(db, "reserves", id.toString(), "resevedDay", day + "-" + time)

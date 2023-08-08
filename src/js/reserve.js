@@ -1,3 +1,10 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 예약 데이터 초기화 및 예약
+ * 작성 일 : 2022. 10. 5
+ * 수정 일 : 2023. 8. 8
+ */
+
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
@@ -28,11 +35,10 @@ const day = today.getDay(); // 요일
 
 const todayFormat = year + "-" + month + "-" + date;
 
-// const reserveDateEl = document.getElementById("reserve-date");
-// reserveDateEl.value = todayFormat;
-// reserveDateEl.min = todayFormat;
-
-// draw reserve section....
+/**
+ * 센터 정보를 받아서 예약 화면을 그려준다.
+ * @param {object} info
+ */
 export function drawReserveSection(info) {
   const reserveSectionEl = document.querySelector(".reserve");
   reserveSectionEl.innerHTML = "";
@@ -63,6 +69,7 @@ export function drawReserveSection(info) {
   opt.setAttribute("value", "");
   opt.innerText = "시간을 선택해 주세요";
   reserveTimeEl.appendChild(opt);
+
   Promise.all([checkTime(info, timeData, todayFormat)]).then(result => {
     timeInit(reserveTimeEl, timeData, result[0]);
   });
@@ -112,6 +119,12 @@ export function drawReserveSection(info) {
   });
 }
 
+/**
+ * 예약을 저장한다.
+ * @param {object} info
+ * @param {string} day
+ * @param {string} time
+ */
 async function saveReserve(info, day, time) {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const reserveDocRef = doc(
@@ -166,6 +179,13 @@ async function saveReserve(info, day, time) {
   }
 }
 
+/**
+ * select의 시간을 초기화 한다.
+ * @param {*} select
+ * @param {array} array
+ * @param {array} findArray
+ * @returns
+ */
 function timeInit(select, array, findArray) {
   let temp = _.cloneDeep(array);
   findArray.forEach(element => {
@@ -184,6 +204,13 @@ function timeInit(select, array, findArray) {
   });
 }
 
+/**
+ * 시간이 예약되어 있다면 비활성화 시킨다.
+ * @param {object} info
+ * @param {array} array
+ * @param {string} day
+ * @returns
+ */
 async function checkTime(info, array, day) {
   const querySnapshot = await getDocs(
     collection(db, "reserves", info.id.toString(), "resevedDay")
@@ -199,6 +226,11 @@ async function checkTime(info, array, day) {
   return temp;
 }
 
+/**
+ * 예약되어있는지 여부를 boolean으로 반환한다.
+ * @param {object} info
+ * @returns boolean
+ */
 async function checkId(info) {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -206,13 +238,11 @@ async function checkId(info) {
     collection(db, "reserves", info.id.toString(), "resevedDay")
   );
 
-  let temp;
+  let isReserved;
 
   querySnapshot.forEach(doc => {
-    if (user.uid === doc.data().userId) temp = true;
+    if (user.uid === doc.data().userId) isReserved = true;
   });
 
-  return temp;
+  return isReserved;
 }
-
-function optionInit(params) {}

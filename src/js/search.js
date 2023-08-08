@@ -1,10 +1,16 @@
+/**
+ * 작성자 : 오황석
+ * 이 파일의 역할 : 검색 시 검색한 주소로 맵을 이동시킨다.
+ * 작성 일 : 2022. 10. 5
+ * 수정 일 : 2023. 8. 8
+ */
+
 import { searchAddressToCoordinate } from "./map";
 import titleimgURL from "../images/titleimg.png";
 import anotherimgURL from "../images/another-title.png";
 import { deleteLike, likeCheck, saveLike } from "./like";
 import { drawReserveSection } from "./reserve";
 
-const searchBtn = document.getElementById("searchBtn");
 const searchInputEl = document.getElementById("search");
 
 searchInputEl.addEventListener("keyup", event => {
