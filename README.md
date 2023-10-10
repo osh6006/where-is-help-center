@@ -61,7 +61,7 @@
 ![firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
-![NaverMap](https://github.com/osh6006/where-is-help-center/assets/56256924/53cb85fb-2179-44b8-840c-b4ee464a7dac)
+![NaverMap](https://github.com/osh6006/where-is-help-center/assets/56256924/e2aa95e4-c1be-4729-aaec-c4a3922f59e2)
 
 
 
