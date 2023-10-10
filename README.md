@@ -63,6 +63,8 @@
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 ![NaverMap](https://github.com/osh6006/where-is-help-center/assets/56256924/69cecb03-3a61-4072-b112-9f2da49aa417)
 ![image](https://github.com/osh6006/where-is-help-center/assets/56256924/10384f89-8a5d-425f-842d-38ec93ab9623)
+![image](https://github.com/osh6006/where-is-help-center/assets/56256924/1c630449-ab34-4754-87ae-2697b2c13fbb)
+
 
 
 ## :white_check_mark: Requirements
