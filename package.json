@@ -1,5 +1,6 @@
 {
-  "name": "food-truck-area",
+  "name": "where-is-center",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -23,7 +24,7 @@
   },
   "dependencies": {
     "axios": "^1.0.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "firebase": "^9.10.0",
     "jquery": "^3.6.1"
   }

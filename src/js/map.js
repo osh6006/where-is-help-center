@@ -25,8 +25,8 @@ let infoArray = new Array();
 /**
  * 센터 데이터를 불러오고 마커이벤트를 등록 후 클러스터링 작업
  */
-Promise.all([getCenterData()]).then(result => {
-  result[0].data.forEach(element => {
+Promise.all([getCenterData()]).then((result) => {
+  result[0].data.forEach((element) => {
     makeMarker(element);
   });
   addMarkerEvent();
@@ -53,9 +53,9 @@ function addMarkerEvent() {
  */
 async function getCenterData() {
   return fetch(`${process.env.CENTER_API_URL}`, CenterRops)
-    .then(response => response.json())
-    .then(result => Promise.resolve(result))
-    .catch(error => console.log("error", error));
+    .then((response) => response.json())
+    .then((result) => Promise.resolve(result))
+    .catch((error) => console.log("error", error));
 }
 
 /**
@@ -224,7 +224,7 @@ function startClustering(markerArray) {
  * 검색주소를 좌표로 변환 후 맵 이동
  * @param {string} address
  */
-export const searchAddressToCoordinate = address => {
+export const searchAddressToCoordinate = (address) => {
   naver.maps.Service.geocode(
     {
       query: address,
