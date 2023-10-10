@@ -48,7 +48,14 @@
 
 코로나 예방 접종 센터가 어디 있는지 알아보세요.
 
+[Demo](https://where-is-center.netlify.app/)
+
 ## :sparkles: Features
+
+메인 페이지
+![screely-1696934093553](https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d)
+
+
 
 ## :rocket: Technologies
 
