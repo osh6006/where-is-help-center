@@ -46,49 +46,45 @@
 
 ## :dart: About
 
-Describe your project
+코로나 예방 접종 센터가 어디 있는지 알아보세요.
 
 ## :sparkles: Features
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
-
 ## :rocket: Technologies
 
-The following tools were used in this project:
+이 프로젝트에는 다음과 같은 도구들이 사용되었습니다.
 
-- [HTML](https://expo.io/)
-- [CSS](https://nodejs.org/en/)
-- [Javascript](https://pt-br.reactjs.org/)
-- [Parcel](https://reactnative.dev/)
-- [NaverMapAPI](https://www.typescriptlang.org/)
+![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+![SCSS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
+![firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+시작하기 전에 :checkered_flag:, [Git](https://git-scm.com) 과 [Node](https://nodejs.org/en/) 가 설치되어 있어야 합니다.
 
 ## :checkered_flag: Starting
 
 ```bash
-# Clone this project
+# 프로젝트를 복제하세요
 $ git clone https://github.com/osh6006/where-is-help-center
 
-# Access
-$ cd food-truck-area
+# 접근
+$ cd where-is-help-center
 
-# Install dependencies
+# dependencies를 다운 받으세요
 $ npm i
 
-# Run the project
+# 프로젝트를 실행 하세요
 $ npm run dev
 
 # The server will initialize in the <http://localhost:1234>
 ```
 
 ## :memo: License
-
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 Made with :heart: by <a href="https://github.com/osh6006" target="_blank">osh6006</a>
 
