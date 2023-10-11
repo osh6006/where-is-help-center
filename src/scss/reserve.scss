@@ -106,7 +106,8 @@
   }
 
   .reserve-modal-content {
-    width: 400px;
+    max-width: 500px;
+    min-width: 400px;
     background-color: $color--white;
     position: absolute;
     top: 80px;
@@ -127,20 +128,26 @@
     }
 
     .reserve__detail-wrapper {
+      .reserve__temp {
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
       .reserve__detail {
         display: flex;
         align-items: center;
         margin-top: 10px;
         gap: 10px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 10px;
+
         img {
           width: 70px;
         }
 
         .reserve__detail-desc {
           h1 {
+            font-weight: bold;
+            font-size: 1.15rem;
             margin-bottom: 10px;
           }
           p {
@@ -156,6 +163,7 @@
         align-items: center;
         justify-content: flex-end;
         gap: 10px;
+        margin-top: 10px;
       }
 
       button {

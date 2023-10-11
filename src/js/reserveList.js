@@ -9,6 +9,7 @@ import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { doc, deleteDoc } from "firebase/firestore";
 import reserveImgURL from "../images/reserve.png";
+import { moveMap } from "./map";
 
 const reserveBtn = document.getElementById("reserveBtn");
 const reserveWrapperEl = document.querySelector(".reserve-modal-wrapper");
@@ -53,7 +54,7 @@ async function reserveInit() {
 
   // doc.id
   // doc.data()
-  querySnapshot.forEach(doc => {
+  querySnapshot.forEach((doc) => {
     const reserveDetail = document.createElement("div");
     reserveDetail.classList.add("reserve__detail");
 
@@ -84,7 +85,11 @@ async function reserveInit() {
     reserveDetail.appendChild(reserveImg);
     reserveDetail.appendChild(reserveDetailDesc);
 
-    reserveDetailWrapperEl.appendChild(reserveDetail);
+    const tempWrapper = document.createElement("div");
+    tempWrapper.classList.add("reserve__temp");
+
+    reserveDetailWrapperEl.appendChild(tempWrapper);
+    tempWrapper.appendChild(reserveDetail);
 
     // button
     const reserveCancelBtn = document.createElement("button");
@@ -96,8 +101,7 @@ async function reserveInit() {
     buttonWrapper.classList.add("btn-wrapper");
     buttonWrapper.appendChild(moveBtn);
     buttonWrapper.appendChild(reserveCancelBtn);
-
-    reserveDetailWrapperEl.appendChild(buttonWrapper);
+    tempWrapper.appendChild(buttonWrapper);
 
     // 데이터 삭제
     reserveCancelBtn.addEventListener("click", () => {
