@@ -84,14 +84,44 @@ function makeMarker(item) {
 
   /* 정보창 */
   let infoWindow = new naver.maps.InfoWindow({
-    content:
-      '<div style="width:200px;text-align:center;padding:10px;border-radius:20px"><b>' +
-      `</b><br/> 주소 : ${item.address}` +
-      `<br/> 기관 명 : ${item.centerName}` +
-      `<br/> 전화번호 : ${item.phoneNumber}` +
-      `<br/> 수정일 :  ${item.phoneNumber}` +
-      "</div>",
+    content: `
+    <div style="display:flex;flex-direction:column;max-width:400px;padding:10px;border-radius:20px;gap:8px">
+      <h2 style="font-size:1.2rem;font-weight:800;margin-top:8px">${item.centerName}</h2>
+      <p style="display:flex;align-items:center;gap:8px;margin-top:10px">
+      <svg style="width:20px;color:#f59f00" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        </svg>
+        ${item.facilityName}
+      </p>
+      <p style="display:flex;align-items:center;gap:8px">
+      <svg style="width:18px;color:red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+      </svg>
+      ${item.phoneNumber}
+      </p>
+
+      <p style="display:flex;align-items:center;gap:8px">
+      <svg style="width:18px;color:#40c057" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+      ${item.address} | ${item.zipCode}</p>
+      <p style="display:flex;align-items:center;gap:8px">
+        <svg style="width:18px;color:#5c7cfa"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ${item.updatedAt}</p>
+    </div>
+    `,
   });
+
+  // '<div style="max-width:400px;text-align:center;padding:10px;border-radius:20px"><b>' +
+  // `</b><br/> 주소 : ${item.address}` +
+  // `<br/> 기관 명 : ${item.centerName}` +
+  // `<br/> 전화번호 : ${item.phoneNumber}` +
+  // `<br/> 수정일 :  ${item.updatedAt}` +
+  // "</div>"
+
   markers.push(marker);
   infoWindows.push(infoWindow);
   infoArray.push(item);
@@ -259,3 +289,18 @@ export function moveMap(lat, lng) {
   map.setZoom(15);
   map.panTo(point);
 }
+
+/**
+ * 근처에 있는 다른 예방센터를 클릭 한 경우 그 곳으로 맵을 이동시킨다.
+ */
+const anotherCardEl = document.querySelector(".another-wrapper");
+anotherCardEl.addEventListener("click", (e) => {
+  let card = e.target.closest(".another-card");
+
+  if (card.dataset?.lat && card.dataset?.lng) {
+    const { lat, lng } = card.dataset;
+    const point = new naver.maps.LatLng(lat, lng);
+    map.setZoom(13);
+    map.panTo(point);
+  }
+});

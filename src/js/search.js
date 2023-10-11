@@ -5,7 +5,7 @@
  * 수정 일 : 2023. 8. 8
  */
 
-import { searchAddressToCoordinate } from "./map";
+import { map, searchAddressToCoordinate } from "./map";
 import titleimgURL from "../images/titleimg.png";
 import anotherimgURL from "../images/another-title.png";
 import { deleteLike, likeCheck, saveLike } from "./like";
@@ -13,7 +13,7 @@ import { drawReserveSection } from "./reserve";
 
 const searchInputEl = document.getElementById("search");
 
-searchInputEl.addEventListener("keyup", event => {
+searchInputEl.addEventListener("keyup", (event) => {
   const value = document.getElementById("search").value;
   if (event.key === "Enter") {
     searchAddressToCoordinate(value);
@@ -26,14 +26,14 @@ let filterArray = [];
 let isLike = false;
 
 export const readCenterInfo = (info, infoArray) => {
-  filterArray = infoArray.filter(
-    data =>
+  filterArray = infoArray.filter((data) => {
+    return (
       data.sido === info.sido &&
       data.sigungu === info.sigungu &&
       info.id !== data.id
-  );
+    );
+  });
   removeEmpty();
-
   card.innerHTML = "";
   const titleWrapperEl = document.createElement("div");
   titleWrapperEl.classList.add("title-wrapper");
@@ -79,7 +79,7 @@ export const readCenterInfo = (info, infoArray) => {
 
   if (!(sessionStorage.getItem("user") === null)) {
     // 좋아요를 클릭 했었는지 안했는지 체크
-    Promise.all([likeCheck(info)]).then(result => {
+    Promise.all([likeCheck(info)]).then((result) => {
       isLike = result[0];
       isLike && icon.setAttribute("name", "heart");
     });
@@ -87,7 +87,7 @@ export const readCenterInfo = (info, infoArray) => {
     icon.addEventListener("click", () => {
       let like;
       // 좋아요를 클릭 했었는지 안했는지 체크
-      Promise.all([likeCheck(info)]).then(result => {
+      Promise.all([likeCheck(info)]).then((result) => {
         like = result[0];
         if (like) {
           deleteLike(info);
@@ -106,11 +106,14 @@ export const readCenterInfo = (info, infoArray) => {
 };
 
 const anotherCardEl = document.querySelector(".another-wrapper");
+
 function drawAnotherCenter() {
   anotherCardEl.innerHTML = "";
-  filterArray.forEach(data => {
+  filterArray?.forEach((data) => {
     anotherCardEl.innerHTML += `
-        <li class="another-card">
+        <li class="another-card" data-lat="${data?.lat}" data-lng="${
+      data?.lng
+    }">
           <img src=${anotherimgURL} alt="another-title" />
             <div class="another-card__desc">
               <h1>${data.centerName.substring(6)}</h1>
@@ -119,6 +122,14 @@ function drawAnotherCenter() {
         </li>
     `;
   });
+
+  if (!filterArray.length) {
+    anotherCardEl.innerHTML += `
+    <div class='another-empty-card'>
+      근처 같은 구에 있는 예방 센터가 없습니다.
+    </div>
+    `;
+  }
 }
 
 const emptyEl = document.querySelector(".empty-wrapper");

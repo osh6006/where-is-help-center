@@ -51,6 +51,12 @@ main {
         }
       }
 
+      .another-empty-card {
+        padding: 1rem;
+        text-align: center;
+        color: #868e96;
+      }
+
       &.hidden {
         display: none;
       }
