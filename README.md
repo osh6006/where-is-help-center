@@ -55,6 +55,14 @@
 메인 페이지
 ![screely-1696934093553](https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d)
 
+마커 클릭 시
+![screely-1696997339887](https://github.com/osh6006/where-is-help-center/assets/56256924/0936b94f-972e-42a5-b32c-e15c422e4011)
+
+즐겨 찾기
+![screely-1696997498092](https://github.com/osh6006/where-is-help-center/assets/56256924/45eb5bf5-316a-47d2-89ef-2d16aed4617a)
+
+예약
+![screely-1696999010513](https://github.com/osh6006/where-is-help-center/assets/56256924/459a38e6-306a-48bd-a998-57ffa7c4c33e)
 
 
 ## :rocket: Technologies
