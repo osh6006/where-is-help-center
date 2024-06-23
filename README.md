@@ -94,16 +94,16 @@ $ npm run dev
 메인 페이지
 
 - 공공 데이터 포털로 코로나 예방 접종 센터의 위치 데이터를 받아와 naver map api에 마커 클러스터링 하였습니다.
-![메인 페이지.webm]([https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EB%85%B9%EC%9D%8C-2024-06-23-050142.webm?alt=media&token=bfdd417b-c8ad-405d-ac38-6831efa838e9))
+[메인 페이지.webm]([https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EB%85%B9%EC%9D%8C-2024-06-23-050142.webm?alt=media&token=bfdd417b-c8ad-405d-ac38-6831efa838e9))
 
 - Firebase를 사용하여 소셜 로그인 구현
-![Firebase.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/2.webm?alt=media&token=6a0004c3-cea0-4885-84fd-1e77d78881e0)
+[Firebase.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/2.webm?alt=media&token=6a0004c3-cea0-4885-84fd-1e77d78881e0)
 
 - 주소 검색 시 맵 이동
 ![주소 검색 시 맵 이](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EB%8A%94%20%EB%8F%99%EC%98%81%EC%83%81%20-%20Clipchamp%EB%A1%9C%20%EC%A0%9C%EC%9E%91.gif?alt=media&token=8f05bc31-55de-4994-97fa-787bed565c3c)
 
 - 로그인 시 좋아요 표시 된 센터 목록 저장 및 조회
-![로그인 시 좋아요 표시.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/123.mp4?alt=media&token=e20c99e3-e536-428b-86d1-2444e48af27b)
+[로그인 시 좋아요 표시.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/123.mp4?alt=media&token=e20c99e3-e536-428b-86d1-2444e48af27b)
 
 ## :hammer: 채택 기술
 
