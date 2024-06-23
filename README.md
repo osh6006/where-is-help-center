@@ -104,7 +104,6 @@ $ npm run dev
 [녹음-2024-06-23-050142.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/9b52e0ed-12ea-4a04-8197-d35afe359806)
 
 
-
 - Firebase를 사용하여 소셜 로그인 구현
 
 [2.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/e044fbdf-3cd7-4a6c-9372-dbd28350cbb0)
@@ -112,7 +111,8 @@ $ npm run dev
 
 - 주소 검색 시 맵 이동
 
-![주소 검색 시 맵 이](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EB%8A%94%20%EB%8F%99%EC%98%81%EC%83%81%20-%20Clipchamp%EB%A1%9C%20%EC%A0%9C%EC%9E%91.gif?alt=media&token=8f05bc31-55de-4994-97fa-787bed565c3c)
+[123.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/4825f5cc-914d-4d40-86a5-6c3624785acf)
+
 
 - 로그인 시 좋아요 표시 된 센터 목록 저장 및 조회
 
