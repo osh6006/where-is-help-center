@@ -33,41 +33,30 @@
 <hr> -->
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/osh6006" target="_blank">Author</a>
+  <a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#rocket-개발-환경">개발 환경</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
+  <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
+  <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
+  <a href="#:pencil2:-프로젝트를-통해-배운-점">프로젝트를 통해 배운 점</a> &#xa0; | &#xa0;
+  <a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
+  <a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
+  <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
+  <a href="https://github.com/osh6006" target="_blank">작성자</a>
 </p>
 
 <br>
 
-## :dart: About
+## :dart: 프로젝트 소개
 
-코로나 예방 접종 센터가 어디 있는지 알아보세요.
+코로나 예방 접종 센터 찾기 사이트는 사용자가 가장 가까운 예방 접종 센터를 쉽게 찾을 수 있도록 도와줍니다. 정확한 위치 정보와 센터 별 운영 시간, 제공되는 서비스 등을 제공하여 안전하고 빠른 예방 접종을 받을 수 있도록 지원합니다. 
 
-[Demo](https://where-is-center.netlify.app/)
+[Demo <-여기에서 프로젝트를 확인하세요](https://where-is-center.netlify.app/)
 
-## :sparkles: Features
+## :rocket: 개발 환경
 
-메인 페이지
-![screely-1696934093553](https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d)
-
-마커 클릭 시
-![screely-1696997339887](https://github.com/osh6006/where-is-help-center/assets/56256924/0936b94f-972e-42a5-b32c-e15c422e4011)
-
-즐겨 찾기
-![screely-1696997498092](https://github.com/osh6006/where-is-help-center/assets/56256924/45eb5bf5-316a-47d2-89ef-2d16aed4617a)
-
-예약
-![screely-1696999010513](https://github.com/osh6006/where-is-help-center/assets/56256924/459a38e6-306a-48bd-a998-57ffa7c4c33e)
-
-
-## :rocket: Technologies
-
-이 프로젝트에는 다음과 같은 도구들이 사용되었습니다.
+이 프로젝트에는 다음의 기술 및 도구가 활용 되었습니다.
 
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
@@ -78,15 +67,12 @@
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 ![NaverMap](https://github.com/osh6006/where-is-help-center/assets/56256924/e2aa95e4-c1be-4729-aaec-c4a3922f59e2)
 
+## :white_check_mark: 필수 사항
 
+⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
+⭐ env 파일을 확인해 주세요 ⭐
 
-
-## :white_check_mark: Requirements
-
-시작하기 전에 :checkered_flag:, [Git](https://git-scm.com) 과 [Node](https://nodejs.org/en/) 가 설치되어 있어야 합니다.
-
-## :checkered_flag: Starting
-
+## :checkered_flag: 시작하기
 ```bash
 # 프로젝트를 복제하세요
 $ git clone https://github.com/osh6006/where-is-help-center
@@ -103,7 +89,37 @@ $ npm run dev
 # The server will initialize in the <http://localhost:1234>
 ```
 
-## :memo: License
+## :sparkles: 페이지 별 기능
+
+메인 페이지
+
+- 공공 데이터 포털로 코로나 예방 접종 센터의 위치 데이터를 받아와 naver map api에 마커 클러스터링 하였습니다.
+![메인 페이지]([https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EB%85%B9%EC%9D%8C-2024-06-23-050142.webm?alt=media&token=bfdd417b-c8ad-405d-ac38-6831efa838e9))
+
+- Firebase를 사용하여 소셜 로그인 구현
+![Firebase ](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/2.webm?alt=media&token=6a0004c3-cea0-4885-84fd-1e77d78881e0)
+
+- 주소 검색 시 맵 이동
+![주소 검색 시 맵 이](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EB%8A%94%20%EB%8F%99%EC%98%81%EC%83%81%20-%20Clipchamp%EB%A1%9C%20%EC%A0%9C%EC%9E%91.gif?alt=media&token=8f05bc31-55de-4994-97fa-787bed565c3c)
+
+- 로그인 시 좋아요 표시 된 센터 목록 저장 및 조회
+![로그인 시 좋아요 표시](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/123.mp4?alt=media&token=e20c99e3-e536-428b-86d1-2444e48af27b)
+
+## :hammer: 채택 기술
+
+- SCSS
+  - 변수, 중첩, 믹스인 등의 기능을 통해 CSS를 효율적이고 재사용 가능하게 작성함으로써 프로젝트의 유지보수성과 관리 효율성을 높힐 수 있기 때문에 채택 하였습니다.
+- Firebase
+  - 실시간 데이터 동기화, 간편한 사용자 인증, 서버 관리 필요 없는 배포 등 다양한 기능을 통해 개발을 더 빠르고 쉽게 할 수 있기 때문에 채택 하였습니다.
+
+## :pencil2: 프로젝트를 통해 배운 점
+
+- SCSS 의 변수, 중첩, 믹스인 등의 기능을 통해 CSS를 효율적이고 재사용 가능하게 작성하는 방법을 배울 수 있었습니다.
+- 파이어베이스에서 받아온 유저의 데이터를 로컬 스토리지에 저장하여 로그인을 유지하는 법을 알 수 있었습니다.
+- naver map api의 맵 마커를 커스텀으로 디자인 하는 방법, 지도에 마커가 많을 시 클러스터링으로 마커를 한 곳으로 모아주는 방법을 배울 수 있었습니다.
+- MDN, naver map api, SCSS등의 공식 문서를 보고  프로젝트에 적용하는 법을 배울 수 있었습니다.
+- Netrify로 간단하게 내 프로젝트를 배포하는 법을 배울 수 있었습니다.
+
 
 Made with :heart: by <a href="https://github.com/osh6006" target="_blank">osh6006</a>
 
