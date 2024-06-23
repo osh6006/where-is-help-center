@@ -88,29 +88,30 @@ $ npm run dev
 
 # The server will initialize in the <http://localhost:1234>
 ```
-
-## :sparkles: 페이지 별 기능
-
-메인 페이지
-
-- 공공 데이터 포털로 코로나 예방 접종 센터의 위치 데이터를 받아와 naver map api에 마커 클러스터링 하였습니다.
-[메인 페이지.webm]([https://github.com/osh6006/where-is-help-center/assets/56256924/52a17cfd-015a-486d-8f79-85cdc824798d](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EB%85%B9%EC%9D%8C-2024-06-23-050142.webm?alt=media&token=bfdd417b-c8ad-405d-ac38-6831efa838e9))
-
-- Firebase를 사용하여 소셜 로그인 구현
-[Firebase.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/2.webm?alt=media&token=6a0004c3-cea0-4885-84fd-1e77d78881e0)
-
-- 주소 검색 시 맵 이동
-![주소 검색 시 맵 이](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EB%8A%94%20%EB%8F%99%EC%98%81%EC%83%81%20-%20Clipchamp%EB%A1%9C%20%EC%A0%9C%EC%9E%91.gif?alt=media&token=8f05bc31-55de-4994-97fa-787bed565c3c)
-
-- 로그인 시 좋아요 표시 된 센터 목록 저장 및 조회
-[로그인 시 좋아요 표시.webm](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/123.mp4?alt=media&token=e20c99e3-e536-428b-86d1-2444e48af27b)
-
 ## :hammer: 채택 기술
 
 - SCSS
   - 변수, 중첩, 믹스인 등의 기능을 통해 CSS를 효율적이고 재사용 가능하게 작성함으로써 프로젝트의 유지보수성과 관리 효율성을 높힐 수 있기 때문에 채택 하였습니다.
 - Firebase
   - 실시간 데이터 동기화, 간편한 사용자 인증, 서버 관리 필요 없는 배포 등 다양한 기능을 통해 개발을 더 빠르고 쉽게 할 수 있기 때문에 채택 하였습니다.
+
+## :sparkles: 페이지 별 기능
+
+메인 페이지
+
+- 공공 데이터 포털로 코로나 예방 접종 센터의 위치 데이터를 받아와 naver map api에 마커 클러스터링 하였습니다.
+[녹음-2024-06-23-050142.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/9b52e0ed-12ea-4a04-8197-d35afe359806)
+
+
+- Firebase를 사용하여 소셜 로그인 구현
+[2.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/e044fbdf-3cd7-4a6c-9372-dbd28350cbb0)
+
+
+- 주소 검색 시 맵 이동
+![주소 검색 시 맵 이](https://firebasestorage.googleapis.com/v0/b/test-123-b790c.appspot.com/o/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EB%8A%94%20%EB%8F%99%EC%98%81%EC%83%81%20-%20Clipchamp%EB%A1%9C%20%EC%A0%9C%EC%9E%91.gif?alt=media&token=8f05bc31-55de-4994-97fa-787bed565c3c)
+
+- 로그인 시 좋아요 표시 된 센터 목록 저장 및 조회
+[ㅋㅋㅋ.webm](https://github.com/osh6006/where-is-help-center/assets/56256924/605da1e0-7e28-4f9c-915a-dceadad450e4)
 
 ## :pencil2: 프로젝트를 통해 배운 점
 
@@ -120,6 +121,9 @@ $ npm run dev
 - MDN, naver map api, SCSS등의 공식 문서를 보고  프로젝트에 적용하는 법을 배울 수 있었습니다.
 - Netrify로 간단하게 내 프로젝트를 배포하는 법을 배울 수 있었습니다.
 
+## :construction: 트러블 슈팅
+
+## :roller_coaster: 개선해야 할 사항
 
 Made with :heart: by <a href="https://github.com/osh6006" target="_blank">osh6006</a>
 
